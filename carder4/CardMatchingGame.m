@@ -9,9 +9,6 @@
 #import "CardMatchingGame.h"
 
 @interface CardMatchingGame()
-@property (strong, nonatomic) NSMutableArray *cards;
-@property (strong, nonatomic) NSMutableArray *otherCards;
-@property (nonatomic) int score;
 
 
 @end
@@ -44,54 +41,6 @@
     return gameOver;
 }
 
--(NSMutableArray *)cards
-{
-    if (!_cards) {
-        _cards = [[NSMutableArray alloc] init];
-        
-    }
-    return _cards;
-}
-
--(NSMutableArray *)otherCards
-{
-    if (!_otherCards) {
-        _otherCards = [[NSMutableArray alloc] init];
-        
-    }
-    return _otherCards;
-}
-
--(NSMutableArray *)recentlyPlayedCards
-{
-    if (!_recentlyPlayedCards) {
-        _recentlyPlayedCards = [[NSMutableArray alloc] init];
-        
-    }
-    return _recentlyPlayedCards;
-}
-
--(id)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
-{
-    self = [super init];
-    if (self) {
-        for (int i = 0; i < count; i++) {
-            Card *card = [deck drawRandomCard];
-            if (!card) {
-                self = nil;
-            } else {
-                self.cards[i] = card;
-            }
-        }
-        
-    }
-    return self;
-}
-
-- (Card *)cardAtIndex:(NSUInteger)index
-{
-    return (index < self.cards.count) ? self.cards[index] : nil;
-}
 
 #define MISMATCH_PENALTY 2
 #define MATCH_BONUS 4
@@ -116,12 +65,10 @@
                     otherCardCount++;
                 }
             }
-            NSLog(@"gameMode: %d, otherCardCount: %d",self.gameMode,otherCardCount);
+
             if ((self.gameMode==0 && otherCardCount==1) | (otherCardCount>1) )
             {
-                NSLog(@"Match called");
                 int matchScore = [card match:self.otherCards];
-                NSLog(@"matchscore: %d",matchScore);
                 if (matchScore)
                 {
                     card.unplayable=YES;
@@ -145,14 +92,13 @@
         } else [self.recentlyPlayedCards removeLastObject];
         card.faceUp = !card.isFaceUp;
         //NSLog(@"------card flipped------- %@",card.contents);
-        NSLog(@"recently played (%d): ",self.recentlyPlayedCards.count);
-        
-        for (Card *rcard in self.recentlyPlayedCards) NSLog(@" %@ ",rcard.contents);
+        //NSLog(@"recently played (%d): ",self.recentlyPlayedCards.count);
+        //for (Card *rcard in self.recentlyPlayedCards) NSLog(@" %@ ",rcard.contents);
         
         self.gameOver=[self checkForGameOver];
         if (self.gameOver) {
             for (int i=0; i<[self.cards count]; i++) {
-                Card *thiscard = [self cardAtIndex:index];
+                Card *thiscard = [self cardAtIndex:i];
                 thiscard.unplayable=TRUE;
                 thiscard.FaceUp=TRUE;
             }

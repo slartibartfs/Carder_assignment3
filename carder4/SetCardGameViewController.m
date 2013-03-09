@@ -12,11 +12,8 @@
 #import "SetCardGame.h"
 
 @interface SetCardGameViewController ()
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (strong, nonatomic) SetCardGame *gameset;
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) SetCardGame *game;
 @property (nonatomic) int flipCount;
-@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *recentlyPlayedCardsLabel;
 
         
@@ -24,15 +21,14 @@
 
 @implementation SetCardGameViewController
 
--(SetCardGame *)gameset
+-(SetCardGame *)game
 {
-    if (!_gameset) {
+    if (!_game) {
         
-        _gameset = [[SetCardGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[[SetCardGameDeck alloc] init]];
-        NSLog(@"SetGame init with %d cards",self.cardButtons.count);
+        _game = [[SetCardGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[[SetCardGameDeck alloc] init]];
         
     }
-    return _gameset;
+    return _game;
     
 }
 
@@ -70,7 +66,7 @@
     
     for (UIButton *cardButton in self.cardButtons)
     {
-        SetPlayingCard *card = (SetPlayingCard *)[self.gameset cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
+        SetPlayingCard *card = (SetPlayingCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
     
         [cardButton setAttributedTitle:[self getSymbol:card.cardSymbol
                                    withNumberOfSymbols:card.cardNumber
@@ -85,7 +81,7 @@
         cardButton.alpha = card.isUnplayable ? 0.0 : 1.0;
         cardButton.backgroundColor = card.isFaceUp ? [UIColor colorWithWhite:0.9 alpha:1.0] : nil;
     }
-        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.gameset.score];
+        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
         self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
     
         NSMutableAttributedString *rlabelText = [[NSMutableAttributedString alloc] initWithString:@"Played: "];
@@ -93,7 +89,7 @@
         NSMutableAttributedString *spacer = [[NSMutableAttributedString alloc] initWithString:@" + "];
         int i=0;
     
-        for (SetPlayingCard *result in self.gameset.recentlyPlayedCards)
+        for (SetPlayingCard *result in self.game.recentlyPlayedCards)
             {
             
             if (i>0) [rlabelText appendAttributedString:spacer];
@@ -114,23 +110,19 @@
 - (IBAction)flipCard:(UIButton *)sender
 {
     
-    [self.gameset flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipCount++;
     [self updateUI];
     
 }
 
--(void)setCardButtons:(NSArray *)cardButtons
-{
-    _cardButtons = cardButtons;
-    
-}
+
 
 
 - (IBAction)dealButton:(UIButton *)sender {
     
-    self.gameset = nil;
-    self.gameset.gameMode = 1;
+    self.game = nil;
+    self.game.gameMode = 1;
     self.flipCount=0;
 
     [self updateUI];
@@ -154,7 +146,7 @@
     
 	// Do any additional setup after loading the view.
     
-    self.gameset.gameMode = 1;
+    self.game.gameMode = 1;
     self.flipCount=0;
     [self updateUI];
     

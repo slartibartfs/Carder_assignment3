@@ -6,23 +6,13 @@
 //  Copyright (c) 2013 Michael Schack. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "Deck.h"
+#import "CardGame.h"
 
-@interface CardMatchingGame : NSObject
+@interface CardMatchingGame : CardGame <cardGame>
 
--(id)initWithCardCount:(NSUInteger)cardCount
-             usingDeck:(Deck *)deck;
-
--(void)flipCardAtIndex:(NSUInteger)index;
--(Card *)cardAtIndex:(NSUInteger)index;
     
 
-@property (nonatomic, readonly) int score;
-@property (nonatomic) int gameMode;
-@property (nonatomic) BOOL gameOver;    
 @property (nonatomic) NSString *resultOfLastFlip;
-@property (strong, nonatomic) NSMutableArray *recentlyPlayedCards;
 
 
 @end

@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 Michael Schack. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CardGameBaseController.h"
 
-@interface SetCardGameViewController : UIViewController
+
+@interface SetCardGameViewController : CardGameBaseController;
 
 
 
