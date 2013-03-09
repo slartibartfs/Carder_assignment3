@@ -8,12 +8,10 @@
 
 #import "SetCardGameViewController.h"
 #import "SetCardGameDeck.h"
-#import "SetPlayingCard.h"
 #import "SetCardGame.h"
 
 @interface SetCardGameViewController ()
-@property (strong, nonatomic) SetCardGame *game;
-@property (nonatomic) int flipCount;
+@property (strong, nonatomic) CardGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *recentlyPlayedCardsLabel;
 
         
@@ -21,7 +19,7 @@
 
 @implementation SetCardGameViewController
 
--(SetCardGame *)game
+-(CardGame *)game
 {
     if (!_game) {
         
@@ -107,50 +105,9 @@
     
 }
 
-- (IBAction)flipCard:(UIButton *)sender
-{
-    
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-    self.flipCount++;
-    [self updateUI];
-    
-}
 
 
 
-
-- (IBAction)dealButton:(UIButton *)sender {
-    
-    self.game = nil;
-    self.game.gameMode = 1;
-    self.flipCount=0;
-
-    [self updateUI];
-    
-}
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    NSLog(@"viewDidLoad SetGame");
-    
-	// Do any additional setup after loading the view.
-    
-    self.game.gameMode = 1;
-    self.flipCount=0;
-    [self updateUI];
-    
-}
 
 
 @end

@@ -12,7 +12,6 @@
 
     
 
-@property (nonatomic) NSString *resultOfLastFlip;
 
 
 @end

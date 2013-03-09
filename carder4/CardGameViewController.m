@@ -8,54 +8,27 @@
 
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
-#import "PlayingCard.h"
 #import "CardMatchingGame.h"
-#import "GameResults.h"
 
 @interface CardGameViewController ()
 
-@property (nonatomic) int flipCount;
-@property (strong, nonatomic) CardMatchingGame *game;
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resultOfLastFlipLabel;
-@property (strong, nonatomic) GameResults *gameResults;
+@property (strong, nonatomic) CardGame *game;
+
 
 
 @end
 
 @implementation CardGameViewController
 
--(GameResults *)gameResults
-{
-    if (!_gameResults) {
-        _gameResults=[[GameResults alloc] init];
-    }
-    return _gameResults;
-    
-        
-}
 
 
-
-- (IBAction)dealButton:(id)sender {
-    
-    self.game = nil;
-    self.flipCount = 0;
-    self.gameResults = nil;
-
-    [self updateUI];
-    
-}
-
-
-
--(CardMatchingGame *)game
+-(CardGame *)game
 {
     if (!_game) {
         
         _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                   usingDeck:[[PlayingCardDeck alloc] init]];
-        self.game.gameMode = 0;
         self.game.resultOfLastFlip = [NSString stringWithFormat:@" - "];
 
     }
@@ -84,38 +57,19 @@
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.resultOfLastFlipLabel.text = [NSString stringWithFormat:@"%@", self.game.resultOfLastFlip];
-    if (self.game.gameOver)  self.resultOfLastFlipLabel.text = [NSString stringWithFormat:@"Game Over!"];
+    if (self.game.gameOver)
+        {
+            self.resultOfLastFlipLabel.text = [NSString stringWithFormat:@"Game Over!"];
+        }
                                                                    
     
 }
 
--(void)setFlipCount:(int)flipCount
-{
-    _flipCount = flipCount;
-    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
-}
 
-- (IBAction)flipCard:(UIButton *)sender
-{
-    
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-    self.flipCount++;
-    self.gameResults.score = self.game.score;
-    [self updateUI];
-    
-}
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Do any additional setup after loading the view.
-    
-    self.game.gameMode = 0;
-    self.flipCount=0;
-    [self updateUI];
-    
-}
+
+
+
 
 
 

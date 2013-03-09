@@ -46,7 +46,7 @@
                     otherCardCount++;
                 }
             }
-            if ((self.gameMode==0 && otherCardCount==1) | (otherCardCount>1) )
+            if (otherCardCount>1)
                 {
                 int matchScore = [card match:self.otherCards];
                 if (matchScore)
