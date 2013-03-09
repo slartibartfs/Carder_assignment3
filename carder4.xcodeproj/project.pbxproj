@@ -144,7 +144,7 @@
 		9F256A5816D6B10100600E27 = {
 			isa = PBXGroup;
 			children = (
-				9F256A6A16D6B10100600E27 /* carder4 */,
+				9F256A6A16D6B10100600E27 /* carder */,
 				9F256A8E16D6B10100600E27 /* carder4Tests */,
 				9F256A6316D6B10100600E27 /* Frameworks */,
 				9F256A6216D6B10100600E27 /* Products */,
@@ -171,7 +171,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9F256A6A16D6B10100600E27 /* carder4 */ = {
+		9F256A6A16D6B10100600E27 /* carder */ = {
 			isa = PBXGroup;
 			children = (
 				9F256AAE16D6B25100600E27 /* Model */,
@@ -188,6 +188,7 @@
 				9F256A7416D6B10100600E27 /* AppDelegate.m */,
 				9F256A6B16D6B10100600E27 /* Supporting Files */,
 			);
+			name = carder;
 			path = carder4;
 			sourceTree = "<group>";
 		};
