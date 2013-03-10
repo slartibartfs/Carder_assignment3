@@ -8,7 +8,7 @@
 
 #import "CardGameBaseController.h"
 
-@interface CardGameViewController : CardGameBaseController <CardGameController>;
+@interface CardGameViewController : CardGameBaseController;
 
 
 

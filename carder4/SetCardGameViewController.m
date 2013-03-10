@@ -19,16 +19,6 @@
 
 @implementation SetCardGameViewController
 
--(CardGame *)game
-{
-    if (!_game) {
-        
-        _game = [[SetCardGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[[SetCardGameDeck alloc] init]];
-        
-    }
-    return _game;
-    
-}
 
 - (NSAttributedString *)getSymbol: (NSNumber *)cardSymbol
               withNumberOfSymbols: (NSUInteger)cardNumber
@@ -61,7 +51,7 @@
 
 -(void)updateUI
 {
-    
+    /*
     for (UIButton *cardButton in self.cardButtons)
     {
         SetPlayingCard *card = (SetPlayingCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
@@ -102,6 +92,7 @@
         
     [self.recentlyPlayedCardsLabel setAttributedText:rlabelText];
     
+    */
     
 }
 

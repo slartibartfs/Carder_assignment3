@@ -7,23 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Deck.h"
 #import "CardGame.h"
 #import "GameResults.h"
 
-@protocol CardGameController
-@required
-- (void)updateUI;
-- (CardGame *)game;
-
-@end
-
-
-
 @interface CardGameBaseController : UIViewController
+
+-(Deck *) createDeck; //abstract
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card; //abstract
+                   
+
+@property (nonatomic) NSUInteger startingCardCount; //abstract
+
 
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak, nonatomic) IBOutlet UILabel *resultOfLastFlipLabel;
 @property (nonatomic) int flipCount;
 @property (strong, nonatomic) GameResults *gameResults;
 

@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "carder4/SetCardGameViewController.m"
-         timestampString = "384557884.723128"
+         timestampString = "384642632.525321"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
+         startingLineNumber = "53"
+         endingLineNumber = "53"
          landmarkName = "-updateUI"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,25 +21,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "carder4/SetCardGameViewController.m"
-         timestampString = "384557884.723128"
+         timestampString = "384642632.525321"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "34"
-         endingLineNumber = "34"
+         startingLineNumber = "24"
+         endingLineNumber = "24"
          landmarkName = "-getSymbol:withNumberOfSymbols:withColor:andShading:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "carder4/CardGameViewController.m"
-         timestampString = "384556958.20531"
+         filePath = "carder4/CardGameBaseController.m"
+         timestampString = "384643624.352355"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
-         landmarkName = "-updateUI"
+         startingLineNumber = "102"
+         endingLineNumber = "102"
+         landmarkName = "-flipCard:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

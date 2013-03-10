@@ -91,10 +91,7 @@
 
         } else [self.recentlyPlayedCards removeLastObject];
         card.faceUp = !card.isFaceUp;
-        //NSLog(@"------card flipped------- %@",card.contents);
-        //NSLog(@"recently played (%d): ",self.recentlyPlayedCards.count);
-        //for (Card *rcard in self.recentlyPlayedCards) NSLog(@" %@ ",rcard.contents);
-        
+               
         self.gameOver=[self checkForGameOver];
         if (self.gameOver) {
             for (int i=0; i<[self.cards count]; i++) {

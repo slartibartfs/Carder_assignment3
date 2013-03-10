@@ -12,6 +12,8 @@
 @protocol cardGame
 @required
 -(BOOL)checkForGameOver;
+-(void)flipCardAtIndex:(NSUInteger)index;
+
 
 @end
 
@@ -20,7 +22,6 @@
 -(Card *)cardAtIndex:(NSUInteger)index;
 -(id)initWithCardCount:(NSUInteger)cardCount
              usingDeck:(Deck *)deck;
--(void)flipCardAtIndex:(NSUInteger)index;
 
 @property (strong, nonatomic) NSMutableArray *cards;
 @property (strong, nonatomic) NSMutableArray *otherCards;
