@@ -892,6 +892,8 @@
         <class className="CardGameBaseController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameBaseController.h"/>
             <relationships>
+                <relationship kind="action" name="dealButton:"/>
+                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
@@ -900,10 +902,7 @@
         <class className="CardGameViewController" superclassName="CardGameBaseController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
-                <relationship kind="action" name="dealButton:"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="resultOfLastFlipLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="GameResultsViewController" superclassName="UIViewController">
@@ -915,8 +914,6 @@
         <class className="SetCardGameViewController" superclassName="CardGameBaseController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardGameViewController.h"/>
             <relationships>
-                <relationship kind="action" name="dealButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="recentlyPlayedCardsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
