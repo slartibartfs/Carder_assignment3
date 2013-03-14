@@ -11,14 +11,21 @@
 #import "CardGame.h"
 #import "GameResults.h"
 
+@protocol cardGameBase
+@required
+
+
+@end
+
 @interface CardGameBaseController : UIViewController
 
+-(CardGame *)game; //abstract
 -(Deck *) createDeck; //abstract
 -(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card; //abstract
-                   
 
+@property (strong, nonatomic) CardGame *game;
+    
 @property (nonatomic) NSUInteger startingCardCount; //abstract
-
 
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;

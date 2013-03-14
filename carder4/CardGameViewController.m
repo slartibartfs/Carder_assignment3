@@ -9,7 +9,6 @@
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
 #import "PlayingCard.h"
-#import "CardMatchingGame.h"
 #import "PlayingCardCollectionViewCell.h"
 
 
@@ -19,8 +18,9 @@
 
 @implementation CardGameViewController
 
+@synthesize game = _game;
 
--(PlayingCardDeck *) createDeck
+-(Deck *) createDeck
 {
     return [[PlayingCardDeck alloc] init];
 }
@@ -32,6 +32,20 @@
     
 }
 
+
+-(CardGame *)game
+{
+    if (!_game){
+        
+        _game = [[CardMatchingGame alloc] initWithCardCount:self.startingCardCount
+                                          usingDeck:[self createDeck]];
+        
+    }
+    return _game;
+    
+}
+
+
 -(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
 {
     if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]]) {
@@ -40,8 +54,23 @@
             PlayingCard *playingCard = (PlayingCard *)card;
             playingCardView.rank = playingCard.rank;
             playingCardView.suit = playingCard.suit;
-            playingCardView.faceUp = playingCard.isFaceUp;
+            
+            if ((playingCardView.faceUp != playingCard.isFaceUp)) {
+                
+                
+                
+                [UIView transitionWithView:playingCardView
+                              duration:0.3
+                               options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+                                   playingCardView.faceUp = playingCard.isFaceUp;
+
+
+                               }
+             
+                            completion:NULL];
+            } 
             playingCardView.alpha = playingCard.isUnplayable ? 0.3 : 1.0;
+
         }
     }
 }

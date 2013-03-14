@@ -7,9 +7,13 @@
 //
 
 #import "CardGameBaseController.h"
+#import "CardMatchingGame.h"
+
 
 @interface CardGameViewController : CardGameBaseController;
 
+
+@property (strong, nonatomic) CardGame *game;
 
 
 

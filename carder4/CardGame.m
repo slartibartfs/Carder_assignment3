@@ -64,10 +64,10 @@
     return self;
 }
 
-/*
+
 -(void)flipCardAtIndex:(NSUInteger)index;
 {
         //abstract
-}*/
+}
 
 @end

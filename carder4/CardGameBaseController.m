@@ -12,7 +12,7 @@
 @interface CardGameBaseController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 
-@property (strong, nonatomic) CardGame *game;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
 
@@ -48,14 +48,18 @@
 
 -(CardGame *)game
 {
-    if (!_game) {
+    if (!_game){
         
         _game = [[CardGame alloc] initWithCardCount:self.startingCardCount
                                                   usingDeck:[self createDeck]];
+        
     }
     return _game;
     
 }
+
+
+
 
 -(Deck *) createDeck
 {
