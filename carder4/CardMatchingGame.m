@@ -97,7 +97,7 @@
             for (int i=0; i<[self.cards count]; i++) {
                 Card *thiscard = [self cardAtIndex:i];
                 thiscard.unplayable=TRUE;
-                thiscard.FaceUp=TRUE;
+                    //thiscard.FaceUp=TRUE;
             }
             NSLog(@"Game Over");
         }

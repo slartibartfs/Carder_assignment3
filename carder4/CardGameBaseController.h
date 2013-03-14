@@ -11,12 +11,6 @@
 #import "CardGame.h"
 #import "GameResults.h"
 
-@protocol cardGameBase
-@required
-
-
-@end
-
 @interface CardGameBaseController : UIViewController
 
 -(CardGame *)game; //abstract

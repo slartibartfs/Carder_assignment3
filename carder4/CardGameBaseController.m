@@ -34,7 +34,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Card" forIndexPath:indexPath];
     Card *card = [self.game cardAtIndex:indexPath.item];
     [self updateCell:cell usingCard:card];
     return cell;
@@ -108,7 +108,7 @@
     if (indexPath) {
         [self.game flipCardAtIndex:indexPath.item];
         self.flipCount++;
-        self.gameResults.score = self.game.score;
+        [self.gameResults setScore:self.game.score];
         [self updateUI];
     }
     

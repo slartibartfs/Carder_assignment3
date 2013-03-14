@@ -10,6 +10,8 @@
 
 @interface GameResults : NSObject
 
+-(void) setScore:(int)score;
+
 +(NSArray *) allGameResults;
 
 

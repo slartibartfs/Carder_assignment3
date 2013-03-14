@@ -9,49 +9,73 @@
 #import "SetCardGameViewController.h"
 #import "SetCardGameDeck.h"
 #import "SetCardGame.h"
+#import "SetCardGameCollectionViewCell.h"
 
 @interface SetCardGameViewController ()
 @property (strong, nonatomic) CardGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *recentlyPlayedCardsLabel;
+@property (weak, nonatomic) IBOutlet UICollectionView *SetCollectionView;
 
         
 @end
 
 @implementation SetCardGameViewController
 
+@synthesize game = _game;
 
-- (NSAttributedString *)getSymbol: (NSNumber *)cardSymbol
-              withNumberOfSymbols: (NSUInteger)cardNumber
-                        withColor: (NSNumber *)cardColor
-                       andShading: (NSNumber *)cardShading
-
+-(Deck *) createDeck
 {
-    NSDictionary *cardSymbols = @{@1: @"●", @2: @"▲", @3: @"■"};
-    NSDictionary *cardColors = @{@1:[UIColor orangeColor], @2:[UIColor blueColor], @3:[UIColor redColor]};
-    NSDictionary *cardShadings = @{@1:@1.0, @2:@0.4, @3:@0.0};
-
-    NSMutableString *result = [[NSMutableString alloc] init];
-    for (int i=1; i<=cardNumber;i++)
-    {
-        [result appendString:cardSymbols[cardSymbol]];
-    }
-    
-    NSMutableAttributedString *cardTitle = [[NSMutableAttributedString alloc] initWithString:result];
-    NSRange range = [[cardTitle string] rangeOfString:[cardTitle string]];
-
-        
-    [cardTitle addAttribute:NSStrokeColorAttributeName value:cardColors[cardColor] range:range];
-    [cardTitle addAttribute:NSStrokeWidthAttributeName value:@-10 range:range];
-    [cardTitle addAttribute:NSForegroundColorAttributeName value:[cardColors[cardColor] colorWithAlphaComponent:[cardShadings[cardShading] floatValue]] range:range];
-
-    
-    return cardTitle;
-                                     
+    return [[SetCardGameDeck alloc] init];
 }
 
+-(CardGame *)game
+{
+    if (!_game){
+        
+        _game = [[SetCardGame alloc] initWithCardCount:self.startingCardCount
+                                                  usingDeck:[self createDeck]];
+        
+    }
+    return _game;
+    
+}
+
+
+-(NSUInteger) startingCardCount
+{
+    return 12;
+    
+}
+
+
+
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
+{
+    if ([cell isKindOfClass:[SetCardGameCollectionViewCell class]]) {
+        SetGameCardView *setGameCardview = ((SetCardGameCollectionViewCell *)cell).SetGameCardView;
+        if ([card isKindOfClass:[SetPlayingCard class]]) {
+            SetPlayingCard *setPlayingCard = (SetPlayingCard *)card;
+            setGameCardview.cardColor = setPlayingCard.cardColor;
+            setGameCardview.cardShading = setPlayingCard.cardShading;
+            setGameCardview.cardSymbol = setPlayingCard.cardSymbol;
+            setGameCardview.cardNumber = setPlayingCard.cardNumber;
+            
+            if ((setGameCardview.faceUp != setPlayingCard.isFaceUp)) {
+                
+                setGameCardview.faceUp = setPlayingCard.isFaceUp;
+            }
+            
+            setGameCardview.alpha = setPlayingCard.isUnplayable ? 0.3 : 1.0;
+          
+            
+        }
+    }
+}
+
+/*
 -(void)updateUI
 {
-    /*
+    
     for (UIButton *cardButton in self.cardButtons)
     {
         SetPlayingCard *card = (SetPlayingCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
@@ -92,10 +116,10 @@
         
     [self.recentlyPlayedCardsLabel setAttributedText:rlabelText];
     
-    */
+    
     
 }
-
+*/
 
 
 

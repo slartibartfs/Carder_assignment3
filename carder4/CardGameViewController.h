@@ -13,7 +13,7 @@
 @interface CardGameViewController : CardGameBaseController;
 
 
-@property (strong, nonatomic) CardGame *game;
+    //@property (strong, nonatomic) CardGame *game;
 
 
 
