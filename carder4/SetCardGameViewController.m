@@ -42,7 +42,7 @@
 
 -(NSUInteger) startingCardCount
 {
-    return 12;
+    return 22;
     
 }
 
