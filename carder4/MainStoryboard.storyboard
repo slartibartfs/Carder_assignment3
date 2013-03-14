@@ -220,10 +220,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Set" id="Ayc-yA-XB1"/>
                     <connections>
-                        <outlet property="SetCollectionView" destination="BLT-aM-9k3" id="WJw-O3-K9J"/>
-                        <outlet property="flipsLabel" destination="4g4-vJ-lDu" id="pnO-g2-RiC"/>
+                        <outlet property="cardCollectionView" destination="BLT-aM-9k3" id="MYO-Dc-Zlk"/>
+                        <outlet property="flipsLabel" destination="4g4-vJ-lDu" id="z9k-PQ-rp3"/>
                         <outlet property="recentlyPlayedCardsLabel" destination="ZPe-MP-EWK" id="m0l-3u-cxI"/>
-                        <outlet property="scoreLabel" destination="fIQ-7e-0H8" id="ZVJ-OH-hKT"/>
+                        <outlet property="resultOfLastFlipLabel" destination="ZPe-MP-EWK" id="x2Z-XA-imv"/>
+                        <outlet property="scoreLabel" destination="fIQ-7e-0H8" id="bIy-kT-00c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8A-wN-yHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,7 +302,6 @@
         <class className="SetCardGameViewController" superclassName="CardGameBaseController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardGameViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="SetCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="recentlyPlayedCardsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

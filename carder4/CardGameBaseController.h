@@ -17,6 +17,7 @@
 -(Deck *) createDeck; //abstract
 -(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card; //abstract
 
+
 @property (strong, nonatomic) CardGame *game;
     
 @property (nonatomic) NSUInteger startingCardCount; //abstract

@@ -14,7 +14,6 @@
 @interface SetCardGameViewController ()
 @property (strong, nonatomic) CardGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *recentlyPlayedCardsLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *SetCollectionView;
 
         
 @end
@@ -73,15 +72,17 @@
     }
 }
 
-
+ /*
 -(void)updateUI
 {
     
-    for (UICollectionViewCell *cell in [self.SetCollectionView visibleCells]){
-        NSIndexPath *indexPath = [self.SetCollectionView indexPathForCell:cell];
+    for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]){
+        NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
         Card *card = [self.game cardAtIndex:indexPath.item];
         [self updateCell:cell usingCard:card];
     }
+    
+
 
     
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
@@ -91,7 +92,7 @@
     
         NSMutableAttributedString *spacer = [[NSMutableAttributedString alloc] initWithString:@" + "];
         int i=0;
-    /*
+   
         for (SetPlayingCard *result in self.game.recentlyPlayedCards)
             {
             
@@ -107,11 +108,11 @@
         
     [self.recentlyPlayedCardsLabel setAttributedText:rlabelText];
     
-    */
+    
     
 }
 
-
+*/
 
 
 
