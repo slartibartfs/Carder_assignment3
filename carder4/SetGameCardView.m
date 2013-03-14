@@ -90,21 +90,21 @@
     
     [roundedRect addClip];
     
+    CGContextRef context = UIGraphicsGetCurrentContext();
     
-    
-    [[UIColor greenColor] setFill];
+    [[UIColor whiteColor] setFill];
     UIRectFill(self.bounds);
         
-      NSMutableAttributedString *setCardText = [[NSMutableAttributedString alloc] initWithString:@"12345"];
+      NSMutableAttributedString *setCardText = [[NSMutableAttributedString alloc] initWithString:@""];
     
-        /* [setCardText appendAttributedString:[self drawSymbol:self.cardSymbol
+        [setCardText appendAttributedString:[self drawSymbol:self.cardSymbol
  withNumberOfSymbols:self.cardNumber
            withColor:self.cardColor
           andShading:self.cardShading]];
-    */
-    CGPoint middle = CGPointMake(self.bounds.size.width/4, self.bounds.size.height/4);
-
-    [setCardText drawAtPoint:middle];
+    
+   
+    
+    [setCardText drawAtPoint:CGPointMake(self.bounds.size.width/2-10, self.bounds.size.height/2)];
     
     [[UIColor blackColor] setStroke];
     [roundedRect stroke];

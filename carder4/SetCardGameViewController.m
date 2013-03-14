@@ -59,11 +59,12 @@
             setGameCardview.cardShading = setPlayingCard.cardShading;
             setGameCardview.cardSymbol = setPlayingCard.cardSymbol;
             setGameCardview.cardNumber = setPlayingCard.cardNumber;
-            
+            setGameCardview.faceUp = setPlayingCard.isFaceUp;
+            /*
             if ((setGameCardview.faceUp != setPlayingCard.isFaceUp)) {
                 
                 setGameCardview.faceUp = setPlayingCard.isFaceUp;
-            }
+            }*/
             
             setGameCardview.alpha = setPlayingCard.isUnplayable ? 0.3 : 1.0;
           
@@ -72,27 +73,17 @@
     }
 }
 
-/*
+
 -(void)updateUI
 {
     
-    for (UIButton *cardButton in self.cardButtons)
-    {
-        SetPlayingCard *card = (SetPlayingCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-    
-        [cardButton setAttributedTitle:[self getSymbol:card.cardSymbol
-                                   withNumberOfSymbols:card.cardNumber
-                                             withColor:card.cardColor
-                                            andShading:card.cardShading] forState:UIControlStateNormal];
-    
-        
-
-        cardButton.selected = card.isFaceUp;
-        cardButton.enabled = !card.isUnplayable;
-        
-        cardButton.alpha = card.isUnplayable ? 0.0 : 1.0;
-        cardButton.backgroundColor = card.isFaceUp ? [UIColor colorWithWhite:0.9 alpha:1.0] : nil;
+    for (UICollectionViewCell *cell in [self.SetCollectionView visibleCells]){
+        NSIndexPath *indexPath = [self.SetCollectionView indexPathForCell:cell];
+        Card *card = [self.game cardAtIndex:indexPath.item];
+        [self updateCell:cell usingCard:card];
     }
+
+    
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
         self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
     
@@ -100,7 +91,7 @@
     
         NSMutableAttributedString *spacer = [[NSMutableAttributedString alloc] initWithString:@" + "];
         int i=0;
-    
+    /*
         for (SetPlayingCard *result in self.game.recentlyPlayedCards)
             {
             
@@ -116,10 +107,10 @@
         
     [self.recentlyPlayedCardsLabel setAttributedText:rlabelText];
     
-    
+    */
     
 }
-*/
+
 
 
 
