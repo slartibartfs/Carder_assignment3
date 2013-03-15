@@ -59,13 +59,11 @@
             setGameCardview.cardSymbol = setPlayingCard.cardSymbol;
             setGameCardview.cardNumber = setPlayingCard.cardNumber;
             setGameCardview.faceUp = setPlayingCard.isFaceUp;
-            /*
-            if ((setGameCardview.faceUp != setPlayingCard.isFaceUp)) {
-                
-                setGameCardview.faceUp = setPlayingCard.isFaceUp;
-            }*/
+           
+            setGameCardview.hidden = setPlayingCard.isUnplayable  ? TRUE   : FALSE;
             
-            setGameCardview.alpha = setPlayingCard.isUnplayable ? 0.3 : 1.0;
+            
+            setGameCardview.alpha = setGameCardview.faceUp ? 0.3 : 1.0;
           
             
         }
